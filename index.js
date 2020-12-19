@@ -1,13 +1,16 @@
 function largestSubarraySum(array){
-    let sum = 0;
-    let newSum = 0;
-    let largestSubarray = [];
+    let currentMax = 0;
+    let maxAtThisIndex = 0;
+
     for (let i = 0; i < array.length; i++) {
-        newSum = sum + array[i];
-        if (newSum >= sum) {
-            largestSubarray.push(array[i]);
-            sum = newSum;
+        maxAtThisIndex = maxAtThisIndex + array[i];
+        if (maxAtThisIndex >= currentMax) {
+            currentMax = maxAtThisIndex;
+        }
+        if (maxAtThisIndex < 0) {
+            maxAtThisIndex = 0;
         }
     };
-    return largestSubarray
+
+    return currentMax
 }
